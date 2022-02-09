@@ -1,11 +1,30 @@
 package ec.edu.ups.ppwfinal.proyectoFinal.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TBL_PERSONA")
 public class Persona {
+	@Id
 	private int id;
+
+	@Column(name="per_cedula")
 	private String cedula;
+
+	@Column(name="per_nombre")
 	private String nombre;
+
+	@Column(name="per_direccion")
 	private String direccion;
+	
+
+	@Column(name="per_correo")
 	private String correo;
+	
+	
 	public int getId() {
 		return id;
 	}
