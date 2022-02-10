@@ -29,9 +29,9 @@ public class UsuarioDAO {
 		
 	}
     
-    public Usuario read(int codigo) {
+    public Usuario read(String nombre) {
  		
-   	Usuario u = em.find(Usuario.class,codigo);
+   	Usuario u = em.find(Usuario.class,nombre);
 		return  u;
 	}
     

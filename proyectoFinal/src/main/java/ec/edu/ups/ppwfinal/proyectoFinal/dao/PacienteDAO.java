@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ec.edu.ups.ppwfinal.proyectoFinal.model.Paciente;
+import ec.edu.ups.ppwfinal.proyectoFinal.model.Persona;
 
 @Stateless
 public class PacienteDAO {
@@ -25,14 +26,14 @@ public class PacienteDAO {
 		
 	}
      
-     public Paciente read(String  cedula) {
+     public Paciente read(Persona pe) {
  		
-    	Paciente p = em.find(Paciente.class, cedula);
+    	Paciente p = em.find(Paciente.class, pe.getCedula());
  		return  p;
  	}
     
-     public void delate (String cedula) {
-    	 Paciente p = em.find(Paciente.class, cedula);
+     public void delate (Persona pea) {
+    	 Paciente p = em.find(Paciente.class, pea.getCedula());
     	 em.remove(p);
     	 
      }
@@ -50,7 +51,7 @@ public class PacienteDAO {
      public List <Paciente > getListNombre(String filtro){
     	 
     	 String jpql ="SELECT p FROM Paciente p "
-    	 		+ "WHERE nombre LIKE ?1";
+    	 		+ "WHERE cedula LIKE ?1";
     	 System.out.println(jpql);
     	 
     	 Query q = em.createQuery(jpql,Paciente.class);

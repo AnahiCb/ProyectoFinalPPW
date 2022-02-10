@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ec.edu.ups.ppwfinal.proyectoFinal.model.Medico;
+import ec.edu.ups.ppwfinal.proyectoFinal.model.Persona;
 
 @Stateless
 public class MedicoDAO {
@@ -27,9 +28,9 @@ public class MedicoDAO {
 		
 	}
      
-     public Medico read(String  cedula) {
+     public Medico read(Persona pe) {
  		
-    	Medico p = em.find(Medico.class, cedula);
+    	Medico p = em.find(Medico.class, pe.getCedula());
  		return  p;
  	}
     

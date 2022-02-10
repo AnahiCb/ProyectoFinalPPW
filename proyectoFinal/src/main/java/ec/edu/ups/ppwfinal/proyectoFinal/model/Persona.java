@@ -9,8 +9,6 @@ import javax.persistence.Table;
 @Table(name="TBL_PERSONA")
 public class Persona {
 	@Id
-	private int id;
-
 	@Column(name="per_cedula")
 	private String cedula;
 
@@ -24,13 +22,7 @@ public class Persona {
 	@Column(name="per_correo")
 	private String correo;
 	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getCedula() {
 		return cedula;
 	}
