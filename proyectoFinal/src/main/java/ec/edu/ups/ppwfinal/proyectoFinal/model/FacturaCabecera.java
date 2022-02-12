@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -18,6 +20,7 @@ import javax.persistence.Table;
 @Table(name="TBL_FACTURA")
 public class FacturaCabecera {
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int numero;
 	@Column(name="fac_numero")
 	private Date fecha;
