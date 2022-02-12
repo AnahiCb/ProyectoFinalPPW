@@ -9,10 +9,14 @@ import javax.persistence.Table;
 public class FacturaDet {
 	@Id
 	private int id;
+	@Column(name="fdet_cantidad")
+	private int cantidad;
 	@Column(name="fdet_servicio")
 	private String servicio;
 	@Column(name="fdet_subtotal")
 	private double subtotal;
+	@Column(name="fdet_iva")
+	private double iva;
 	@Column(name="fdet_total")
 	private double total;
 	public int getId() {
@@ -38,6 +42,12 @@ public class FacturaDet {
 	}
 	public void setServicio(String servicio) {
 		this.servicio = servicio;
+	}
+	public double getIva() {
+		return iva;
+	}
+	public void setIva(double iva) {
+		this.iva = iva;
 	}
 	
 	

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import ec.edu.ups.ppwfinal.proyectoFinal.model.FacturaCabecera;
+import ec.edu.ups.ppwfinal.proyectoFinal.model.Persona;
 
 @Stateless
 public class FacturaDAO {
@@ -26,14 +27,14 @@ public class FacturaDAO {
 		
 	}
      
-     public FacturaCabecera read(String  cedula) {
+     public FacturaCabecera read(int id) {
  		
-    	FacturaCabecera p = em.find(FacturaCabecera.class, cedula);
+    	FacturaCabecera p = em.find(FacturaCabecera.class, id);
  		return  p;
  	}
     
-     public void delate (String cedula) {
-    	 FacturaCabecera p = em.find(FacturaCabecera.class, cedula);
+     public void delate (int id) {
+    	 FacturaCabecera p = em.find(FacturaCabecera.class, id);
     	 em.remove(p);
     	 
      }
@@ -48,6 +49,20 @@ public class FacturaDAO {
     	 
      }
      
+     
+   public List <FacturaCabecera> getListNombre(String filtro){
+    	 
+    	 String jpql ="SELECT p FROM FacturaCabecera p "
+    	 		+ "WHERE numero LIKE ?1";
+    	 System.out.println(jpql);
+    	 
+    	 Query q = em.createQuery(jpql,Persona.class);
+    	 
+    	 q.setParameter(1,filtro);
+    	 
+    	 return q.getResultList();
+    	 
+     }
   
     
 

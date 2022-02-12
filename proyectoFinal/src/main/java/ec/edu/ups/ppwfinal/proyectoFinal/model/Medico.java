@@ -17,9 +17,7 @@ public class Medico {
 	@Column(name="med_horario")
 	private String horario;
 	
-	@OneToOne
-	@JoinColumn(name="per_cedula")
-	private Persona p;
+
 	
 	
 	public int getId() {
@@ -40,12 +38,7 @@ public class Medico {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-	public Persona getP() {
-		return p;
-	}
-	public void setP(Persona p) {
-		this.p = p;
-	}
+
 	
 	
 	

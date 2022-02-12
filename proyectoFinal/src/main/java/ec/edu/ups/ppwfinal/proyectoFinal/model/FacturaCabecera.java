@@ -21,7 +21,6 @@ public class FacturaCabecera {
 	private int numero;
 	@Column(name="fac_numero")
 	private Date fecha;
-	@Column(name="fac_cedula")
 	@OneToOne
 	@JoinColumn(name="per_cedula")
 	private Persona cliente;

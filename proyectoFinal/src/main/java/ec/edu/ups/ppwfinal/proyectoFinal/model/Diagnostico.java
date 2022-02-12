@@ -19,12 +19,13 @@ public class Diagnostico {
 	private String descrip;
 
 	@OneToOne
-	@JoinColumn(name="diag_medico")
-	private Medico m;
-
-	@OneToOne
 	@JoinColumn(name="diag_paciente")
-	private Paciente p;
+	private Persona paciente;
+    
+	@OneToOne
+	@JoinColumn(name="diag_medico")
+	private Persona medico;
+
 	public int getId() {
 		return id;
 	}
@@ -43,18 +44,21 @@ public class Diagnostico {
 	public void setDescrip(String descrip) {
 		this.descrip = descrip;
 	}
-	public Medico getM() {
-		return m;
+	public Persona getPaciente() {
+		return paciente;
 	}
-	public void setM(Medico m) {
-		this.m = m;
+	public void setPaciente(Persona paciente) {
+		this.paciente = paciente;
 	}
-	public Paciente getP() {
-		return p;
+	public Persona getMedico() {
+		return medico;
 	}
-	public void setP(Paciente p) {
-		this.p = p;
+	public void setMedico(Persona medico) {
+		this.medico = medico;
 	}
+
+     
+
 	
 	
 }

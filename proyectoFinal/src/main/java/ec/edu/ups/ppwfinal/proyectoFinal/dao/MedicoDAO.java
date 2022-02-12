@@ -28,14 +28,14 @@ public class MedicoDAO {
 		
 	}
      
-     public Medico read(Persona pe) {
+     public Medico read(int id) {
  		
-    	Medico p = em.find(Medico.class, pe.getCedula());
+    	Medico p = em.find(Medico.class, id);
  		return  p;
  	}
     
-     public void delate (String cedula) {
-    	 Medico p = em.find(Medico.class, cedula);
+     public void delate (int id) {
+    	 Medico p = em.find(Medico.class, id);
     	 em.remove(p);
     	 
      }
@@ -59,8 +59,20 @@ public class MedicoDAO {
     	 Query q = em.createQuery(jpql,Medico.class);
     	 
     	 q.setParameter(1,filtro);
-    	 
     	 return q.getResultList();
+    	 
+     }
+     public Medico  findMedico(String filtro){
+    	 
+    	 String jpql ="SELECT p FROM Medico p "
+    	 		+ "WHERE per_cedula LIKE ?1";
+    	 System.out.println(jpql);
+    	 
+    	 Query q = em.createQuery(jpql,Medico.class);
+    	 
+    	 q.setParameter(1,filtro);
+    	 Medico med = (Medico) q.getSingleResult();
+    	 return med;
     	 
      }
 }

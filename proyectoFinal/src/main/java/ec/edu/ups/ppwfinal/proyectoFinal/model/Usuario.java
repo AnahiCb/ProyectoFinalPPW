@@ -20,17 +20,9 @@ public class Usuario {
 	private String contra;
 	@Column(name="usu_nombre")
 	
-	@OneToOne
-	@JoinColumn(name="per_cedula")
-	private Persona p;
+
 	
 	
-	public Persona getP() {
-		return p;
-	}
-	public void setP(Persona p) {
-		this.p = p;
-	}
 	public String getUsuario() {
 		return usuario;
 	}
@@ -42,6 +34,12 @@ public class Usuario {
 	}
 	public void setContra(String contra) {
 		this.contra = contra;
+	}
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 	
 	

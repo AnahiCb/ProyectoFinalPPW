@@ -5,6 +5,8 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="TBL_CITA")
@@ -18,9 +20,13 @@ public class Cita {
 	@Column(name="cita_horarios")
 	private String horarios;
 	
-	private Medico m;
-	private Paciente p;
+	@OneToOne
+	@JoinColumn(name="cita_paciente")
+	private Persona paciente;
 	
+	@OneToOne
+	@JoinColumn(name="cita_medico")
+	private Persona medico;
 	public int getId() {
 		return id;
 	}
@@ -39,18 +45,7 @@ public class Cita {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public Medico getM() {
-		return m;
-	}
-	public void setM(Medico m) {
-		this.m = m;
-	}
-	public Paciente getP() {
-		return p;
-	}
-	public void setP(Paciente p) {
-		this.p = p;
-	}
+
 	public String getHorarios() {
 		return horarios;
 	}
