@@ -25,7 +25,7 @@ public class FacturaCabecera {
 	@Column(name="fac_numero")
 	private Date fecha;
 	@OneToOne
-	@JoinColumn(name="per_cedula")
+	@JoinColumn(name="fac_cedula")
 	private Persona cliente;
 	
 	@OneToMany(cascade = CascadeType.ALL)

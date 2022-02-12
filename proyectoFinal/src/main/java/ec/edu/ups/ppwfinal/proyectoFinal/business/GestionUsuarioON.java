@@ -15,7 +15,7 @@ public class GestionUsuarioON {
 	@Inject
 	private UsuarioDAO usuarioDao;
 	
-	public String guardarUsuario(Usuario u,Persona pe) {// Guardar o Actualizar usuarios
+	public String guardarUsuario(Usuario u) {// Guardar o Actualizar usuarios
 
 		Usuario p = usuarioDao.read(u.getCodigo());
 

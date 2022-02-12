@@ -46,7 +46,7 @@ public class UsuarioDAO {
    	 String jpql ="SELECT u FROM Usuario u" ;
    	 
    	 Query q = em.createQuery(jpql,Usuario.class);
-   	 
+   	 System.out.print(q.getResultList());
    	 return q.getResultList();
    	 
     }
