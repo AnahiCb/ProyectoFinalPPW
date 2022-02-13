@@ -1,5 +1,7 @@
 package ec.edu.ups.ppwfinal.proyectoFinal.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TBL_PERSONA")
-public class Persona {
+public class Persona implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name="per_cedula")
 	private String cedula;
@@ -23,24 +30,12 @@ public class Persona {
 
 	@Column(name="per_correo")
 	private String correo;
-	@OneToOne
-	@JoinColumn(name="med_id")
-    private Medico medico;
-	@OneToOne
-	@JoinColumn(name="pac_id")
-    private Paciente paciente;
+	@Column(name="per_pass")
+	private String pass;
     
-	@OneToOne
-	@JoinColumn(name="usu_id")
-	private Usuario usuario;
-	
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+	@Column(name="per_rol")//medico o paciente
+	private String rol;
+
 	public String getCedula() {
 		return cedula;
 	}
@@ -65,18 +60,21 @@ public class Persona {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public Medico getMedico() {
-		return medico;
+	public String getPass() {
+		return pass;
 	}
-	public void setMedico(Medico medico) {
-		this.medico = medico;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
-	public Paciente getPaciente() {
-		return paciente;
+	public String getRol() {
+		return rol;
 	}
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
+
+
+    
 	
 	
 }

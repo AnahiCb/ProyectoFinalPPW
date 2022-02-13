@@ -49,29 +49,28 @@ public class PersonaDAO {
     	 
      }
     
-     public List <Persona > getListPacientes(String cedula){
+     public List <Persona > getListPacientes(){
     	 
     	 String jpql ="SELECT p FROM Persona p "
-    	 		+ "WHERE paciente = ?1";
+    	 		+ "WHERE per_rol ='paciente'";
     	 System.out.println(jpql);
     	 
     	 Query q = em.createQuery(jpql,Persona.class);
     	 
-    	 q.setParameter(1,cedula);
+    
     	 
     	 return q.getResultList();
     	 
      }
      
-     public List <Persona > getListPMedicos(String cedula){
+     public List <Persona > getListMedicos(){
     	 
     	 String jpql ="SELECT p FROM Persona p "
-    	 		+ "WHERE medico = ?1";
+    	 		+ "WHERE per_rol = 'medico'";
     	 System.out.println(jpql);
     	 
     	 Query q = em.createQuery(jpql,Persona.class);
     	 
-    	 q.setParameter(1,cedula);
     	 
     	 return q.getResultList();
     	 

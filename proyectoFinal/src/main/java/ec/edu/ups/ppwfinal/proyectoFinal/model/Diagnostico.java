@@ -1,5 +1,6 @@
 package ec.edu.ups.ppwfinal.proyectoFinal.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -12,7 +13,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="TBL_DIAGNOSTICO")
-public class Diagnostico {
+public class Diagnostico implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;

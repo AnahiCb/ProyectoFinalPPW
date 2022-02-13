@@ -1,5 +1,6 @@
 package ec.edu.ups.ppwfinal.proyectoFinal.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TBL_FACTURA")
-public class FacturaCabecera {
+public class FacturaCabecera implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int numero;

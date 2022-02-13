@@ -1,5 +1,7 @@
 package ec.edu.ups.ppwfinal.proyectoFinal.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="TBL_DETALLES")
-public class FacturaDet {
+public class FacturaDet  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
