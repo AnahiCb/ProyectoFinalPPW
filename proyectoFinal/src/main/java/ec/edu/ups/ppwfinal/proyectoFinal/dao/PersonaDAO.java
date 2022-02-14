@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.ws.rs.core.Response;
+
 import ec.edu.ups.ppwfinal.proyectoFinal.model.Persona;
 
 
@@ -46,6 +48,52 @@ public class PersonaDAO {
     	 Query q = em.createQuery(jpql,Persona.class);
     	 
     	 return q.getResultList();
+    	 
+     }
+     public Persona getPersona(String cedula){
+    	 
+    	 String jpql ="SELECT p FROM Persona p where per_cedula = '"+cedula+"'";
+    	
+    	 
+    	 Query q = em.createQuery(jpql,Persona.class);
+    	 
+    	 List<Persona> per = q.getResultList();
+    	
+    	 System.out.print(q);
+    	 return per.get(0);
+    	 
+     }
+     public Persona getPersonaLogCorreo(String correo){
+    	 
+    	 String jpql ="SELECT p FROM Persona p where per_correo = '"+correo+"'";
+    	
+    	 
+    	 Query q = em.createQuery(jpql,Persona.class);
+    	 
+    	 List<Persona> per = q.getResultList();
+    	
+    	 System.out.print(q);
+    	 return per.get(0);
+    	 
+     }
+     public Persona getPersonaLog(String correo,String pass){
+    	 
+    	 String jpql ="SELECT p FROM Persona p WHERE per_correo = ?1 AND per_pass = ?2 ";
+    	
+    	 try {
+    		 Query q = em.createQuery(jpql,Persona.class);
+        	 q.setParameter(1, correo);
+        	 q.setParameter(2, pass);
+        	 List<Persona> per = q.getResultList();
+        	
+        	 System.out.print(q);
+        	 return per.get(0);
+    	 }catch(Exception e) {
+    		 
+    		 return null;
+    		 
+    	 }
+    
     	 
      }
     

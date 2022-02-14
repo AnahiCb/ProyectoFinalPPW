@@ -16,7 +16,10 @@ public class Persona implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+    
+	public Persona() {
+	
+	}
 	@Id
 	@Column(name="per_cedula")
 	private String cedula;

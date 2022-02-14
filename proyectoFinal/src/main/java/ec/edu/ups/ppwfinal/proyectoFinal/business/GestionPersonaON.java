@@ -51,6 +51,19 @@ public List <Persona> getPersonas () {
 		
 	}
 
+public Object getPersona (String cedula) {
+	
+	
+	return  personaDao.getPersona(cedula);
+	
+}
+public Object getPersonaLog (String correo,String pass) {//Persona que se loggea
+	
+	
+	return  personaDao.getPersonaLog(correo, pass);
+	
+}
+
 	public List <Persona> getPacientes() {
 		
 	

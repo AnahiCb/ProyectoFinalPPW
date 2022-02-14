@@ -49,7 +49,7 @@ public class DiagnosticoDAO {
     	 
      }
     
-     public List <Diagnostico > getListFecha (String filtro){
+     public List <Diagnostico > getListFecha (String fecha){//filtro
     	 
     	 String jpql ="SELECT p FROM Diagnostico p "
     	 		+ "WHERE diag_fecha LIKE ?1";
@@ -57,21 +57,23 @@ public class DiagnosticoDAO {
     	 
     	 Query q = em.createQuery(jpql,Diagnostico.class);
     	 
-    	 q.setParameter(1,filtro);
-    	 return q.getResultList();
+    	 q.setParameter(1 ,fecha);
+    	 List<Diagnostico> ld = q.getResultList();
+    	 return ld;
     	 
      }
-     public Diagnostico  findDiagnostico(String filtro){
+   
+     public Diagnostico readDiagFecha(String fecha){//read
     	 
     	 String jpql ="SELECT p FROM Diagnostico p "
-    	 		+ "WHERE per_cedula LIKE ?1";
+    	 		+ "WHERE diag_fecha LIKE ?1";
     	 System.out.println(jpql);
     	 
     	 Query q = em.createQuery(jpql,Diagnostico.class);
     	 
-    	 q.setParameter(1,filtro);
-    	 Diagnostico med = (Diagnostico) q.getSingleResult();
-    	 return med;
+    	 q.setParameter(1,fecha);
+    	 List<Diagnostico> ld = q.getResultList();
+    	 return ld.get(0);
     	 
      }
 

@@ -1,5 +1,6 @@
 package ec.edu.ups.ppwfinal.proyectoFinal.services;
 
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,9 +15,12 @@ import javax.ws.rs.Produces;
 
 import ec.edu.ups.ppwfinal.proyectoFinal.business.GestionPersonaON;
 import ec.edu.ups.ppwfinal.proyectoFinal.model.Persona;
+import ec.edu.ups.ppwfinal.proyectoFinal.encrypt.*;
 @Path("Personas")
-public class PersonasServicesRest {
 
+
+public class PersonasServicesRest {
+	private Encrypt encryptar= new Encrypt();
 	@Inject 
 	private GestionPersonaON PersonasON;
 	
@@ -24,10 +28,12 @@ public class PersonasServicesRest {
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public Respuesta crearPersona( Persona u) {
-		
 		Respuesta res = new Respuesta ();
 		try {
 	 res.setCodigo(1);
+		String aux = u.getPass();
+		u.setPass(encryptar.getAES(aux));
+		System.out.print(encryptar.getAES(aux));
 		res.setMensaje(PersonasON.guardarPersona(u));
 			return res;
 		}catch(Exception e){
@@ -38,12 +44,21 @@ public class PersonasServicesRest {
 		
 	}
 	@GET
-	@Path("find/{cedula}")
+	@Path("{cedula}")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public Persona findPersona(@PathParam("cedula") String cedula){
+	public Object getPersona(@PathParam("cedula") String cedula){
 
-		Persona Persona = PersonasON.readPersona(cedula);
-		return Persona;
+		return PersonasON.getPersona(cedula);
+	}
+    
+	
+
+	@GET
+	@Path("{correo}/{pass}")
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public Object getPersonaLog(@PathParam("correo") String correo,@PathParam("pass") String pass){
+
+		return PersonasON.getPersonaLog(correo, pass);
 	}
 	@PUT
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -64,10 +79,24 @@ public class PersonasServicesRest {
 		List<Persona> Personas = PersonasON.getPersonas();
 		return Personas;
 	}
+	@GET
+	@Path("pacientes")
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public List<Persona> getPacientes(){
+		List<Persona> Personas = PersonasON.getPacientes();
+		return Personas;
+	}
+	@GET
+	@Path("medicos")
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public List<Persona> getMedicos(){
+		List<Persona> Personas = PersonasON.getMedicos();
+		return Personas;
+	}
 	@DELETE
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@Path("delete/{cedula}")
-	public void elminarPersonas (@PathParam("cedula") String cedula) {
+	@Path("{cedula}")
+	public void eliminarPersonas (@PathParam("cedula") String cedula) {
 		try {
     		PersonasON.eliminarPersona(cedula);
     		
@@ -77,5 +106,7 @@ public class PersonasServicesRest {
     	}
 		
 	}
+	
+
 	
 }

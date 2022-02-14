@@ -22,7 +22,7 @@ public class Diagnostico implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column(name="diag_fecha")
-	private Date fecha;
+	private String fecha;
 	@Column(name="diag_descrip")
 	private String descrip;
 
@@ -40,10 +40,10 @@ public class Diagnostico implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	public String getDescrip() {

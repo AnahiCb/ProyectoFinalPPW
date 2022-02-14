@@ -29,6 +29,8 @@ public class FacturaCabecera implements Serializable {
 	private int numero;
 	@Column(name="fac_numero")
 	private Date fecha;
+	@Column(name="fac_estado")
+	private String estado;
 	@OneToOne
 	@JoinColumn(name="fac_cedula")
 	private Persona cliente;
@@ -62,6 +64,12 @@ public class FacturaCabecera implements Serializable {
 		this.detalles = detalles;
 	}
 	
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 	public void addDetalle (FacturaDet detalle) {
 		
     	if (detalles==null) {

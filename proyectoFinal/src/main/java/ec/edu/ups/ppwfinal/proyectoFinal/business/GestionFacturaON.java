@@ -1,7 +1,5 @@
 package ec.edu.ups.ppwfinal.proyectoFinal.business;
 
-import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
