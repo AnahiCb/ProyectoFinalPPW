@@ -27,7 +27,7 @@ public class PersonasServicesRest {
 	@POST 
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public Respuesta crearPersona( Persona u) {
+	public Respuesta crearPersona( Persona u) {//Crear persona
 		Respuesta res = new Respuesta ();
 		try {
 	 res.setCodigo(1);
@@ -46,7 +46,7 @@ public class PersonasServicesRest {
 	@GET
 	@Path("{cedula}")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public Object getPersona(@PathParam("cedula") String cedula){
+	public Object getPersona(@PathParam("cedula") String cedula){//Obtener persona por cedula
 
 		return PersonasON.getPersona(cedula);
 	}
@@ -56,14 +56,14 @@ public class PersonasServicesRest {
 	@GET
 	@Path("{correo}/{pass}")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public Object getPersonaLog(@PathParam("correo") String correo,@PathParam("pass") String pass){
+	public Object getPersonaLog(@PathParam("correo") String correo,@PathParam("pass") String pass){//Obtener objecto Persona para login
 
 		return PersonasON.getPersonaLog(correo, pass);
 	}
 	@PUT
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-    public void actualizarProducto (Persona Persona) {
+    public void actualizarPersona (Persona Persona) {
     	try {
     		PersonasON.guardarPersona(Persona);
     		
@@ -75,28 +75,28 @@ public class PersonasServicesRest {
     }
 	@GET
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public List<Persona> getPersonas(){
+	public List<Persona> getPersonas(){// Obtener lista de Personas
 		List<Persona> Personas = PersonasON.getPersonas();
 		return Personas;
 	}
 	@GET
 	@Path("pacientes")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public List<Persona> getPacientes(){
+	public List<Persona> getPacientes(){//Obtener lista de Pacientes
 		List<Persona> Personas = PersonasON.getPacientes();
 		return Personas;
 	}
 	@GET
 	@Path("medicos")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public List<Persona> getMedicos(){
+	public List<Persona> getMedicos(){//Obtener lista de medicos
 		List<Persona> Personas = PersonasON.getMedicos();
 		return Personas;
 	}
 	@DELETE
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Path("{cedula}")
-	public void eliminarPersonas (@PathParam("cedula") String cedula) {
+	public void eliminarPersonas (@PathParam("cedula") String cedula) {//Eliminar Persona
 		try {
     		PersonasON.eliminarPersona(cedula);
     		
