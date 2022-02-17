@@ -31,9 +31,7 @@ public class PersonasServicesRest {
 		Respuesta res = new Respuesta ();
 		try {
 	 res.setCodigo(1);
-		String aux = u.getPass();
-		u.setPass(encryptar.getAES(aux));
-		System.out.print(encryptar.getAES(aux));
+	
 		res.setMensaje(PersonasON.guardarPersona(u));
 			return res;
 		}catch(Exception e){

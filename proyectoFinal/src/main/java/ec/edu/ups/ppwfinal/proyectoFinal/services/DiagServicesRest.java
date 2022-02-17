@@ -25,9 +25,8 @@ public class DiagServicesRest {
 	@POST 
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public Respuesta crearDiag( Diagnostico u,Persona paciente, Persona medico) {//Crear un diagnostico
-		u.setPaciente(paciente);
-		u.setMedico(medico);
+	public Respuesta crearDiag( Diagnostico u) {//Crear un diagnostico
+
 		Respuesta res = new Respuesta ();
 		try {
 	 res.setCodigo(1);

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head>
+	<!-- 	<f:metadata> -->
+	<!-- 		<f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam> -->
+	<!-- 		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction> -->
+	<!-- 	</f:metadata> -->
+
+</h:head>
+<ui:composition template="blank-page.xhtml">
+	<ui:define name="title">
+        Crear Usuarios             
+    </ui:define>
+	<ui:define name="content">
+		<h:form class="forms-sample">
+<!-- 			<div class="card-body"> -->
+				
+				<div class="form-group">
+					<label for="txtCedula">Cedula</label>
+					<h:inputText value="#{personasBean.cedula}" class="form-control"
+						id="txtCedula" />
+				</div>
+				<div class="form-group">
+					<label for="txtNombre">Nombre</label>
+					<h:inputText value="#{personasBean.nombre}" class="form-control"
+						id="txtNombre" />
+				</div>
+				<div class="form-group">
+					<label for="txtDireccion">Direccion</label>
+					<h:inputText value="#{personasBean.direccion}" class="form-control"
+						id="txtDireccion" />
+				</div>
+				<div class="form-group">
+					<label for="txtCorreo">Correo</label>
+					<h:inputText value="#{personasBean.correo}" class="form-control"
+						id="txtCorreo" />
+				</div>
+				<div class="form-group">
+					<label for="txtPass">Contraseña</label>
+					<h:inputText value="#{personasBean.pass}" class="form-control"
+						id="txtPass" />
+				</div>
+                <div class="form-group">
+					<label for="txtRol">Rol</label>
+					<h:inputText value="#{personasBean.rol}" class="form-control"
+						id="txtRol" />
+				</div>
+				<h:commandButton action="#{personasBean.guardarPersona()}"
+					class="btn btn-primary mr-2" value="Guardar" />
+
+				
+
+				<h:commandButton action="listado-usuarios" class="btn btn-light"
+					value="Cancelar" />
+<!-- 			</div> -->
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

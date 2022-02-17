@@ -16,7 +16,7 @@ public class DiagnosticoDAO {
 	private EntityManager em;
 	
 	public void insert(Diagnostico p) {
-		
+		System.out.println(p);
 		em.persist(p);
 		
 	}

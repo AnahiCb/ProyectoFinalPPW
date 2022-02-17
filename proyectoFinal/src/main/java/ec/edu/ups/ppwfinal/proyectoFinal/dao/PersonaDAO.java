@@ -52,11 +52,11 @@ public class PersonaDAO {
      }
      public Persona getPersona(String cedula){
     	 
-    	 String jpql ="SELECT p FROM Persona p where per_cedula = '"+cedula+"'";
+    	 String jpql ="SELECT p FROM Persona p where per_cedula = ?1";
     	
     	 
     	 Query q = em.createQuery(jpql,Persona.class);
-    	 
+    	 q.setParameter(1,cedula);
     	 List<Persona> per = q.getResultList();
     	
     	 System.out.print(q);
@@ -65,10 +65,11 @@ public class PersonaDAO {
      }
      public Persona getPersonaLogCorreo(String correo){
     	 
-    	 String jpql ="SELECT p FROM Persona p where per_correo = '"+correo+"'";
+    	 String jpql ="SELECT p FROM Persona p where per_correo = ?1";
     	
     	 
     	 Query q = em.createQuery(jpql,Persona.class);
+    	 q.setParameter(1, correo);
     	 
     	 List<Persona> per = q.getResultList();
     	

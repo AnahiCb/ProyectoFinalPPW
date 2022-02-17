@@ -13,17 +13,17 @@ public class GestionDiagnosticoON {
 	@Inject
 	private DiagnosticoDAO diagDAO;
 
-	public String guardarDiag(Diagnostico d) {
+	public String guardarDiag(Diagnostico diag) {
 
-		Diagnostico p = diagDAO.read(d.getId());
+		Diagnostico p = diagDAO.read(diag.getId());
 
 		if (p == null) {
 
-			diagDAO.insert(p);
+			diagDAO.insert(diag);
 			return "persona insertada correctamente";
 		} else {
 
-			diagDAO.update(p);
+			diagDAO.update(diag);
 			return "persona actualizada correctamente";
 		}
 	}
@@ -39,15 +39,9 @@ public class GestionDiagnosticoON {
 	}
 
 	public String delateDiag(int id) {
-		if (id == 0) {
-
+	
 			diagDAO.delate(id);
 			return "Persona eliminada correctamente";
-
-		} else {
-
-			return "No se pudo eliminar ";
-		}
 	}
 	public List<Diagnostico> getList(){
 		

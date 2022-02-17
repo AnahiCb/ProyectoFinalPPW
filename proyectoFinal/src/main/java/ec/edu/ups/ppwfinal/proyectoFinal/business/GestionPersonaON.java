@@ -7,34 +7,37 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ec.edu.ups.ppwfinal.proyectoFinal.dao.*;
+import ec.edu.ups.ppwfinal.proyectoFinal.encrypt.Encrypt;
 import ec.edu.ups.ppwfinal.proyectoFinal.model.*;
 
 @Stateless
 public class GestionPersonaON {
 	@Inject
 	private PersonaDAO personaDao;
-	
+	private Encrypt encrypt = new Encrypt();
 	public String guardarPersona (Persona pe) {
 		
 		Persona p = personaDao.read(pe.getCedula());
 		
 		if (p==null) {
-			
+		
 			personaDao.insert(pe);
 			return "persona insertada correctamente";
 		}else {
-			
+	
+		
 			personaDao.update(pe);
 			return "persona actualizada correctamente";
 		}
 		
 		
-		
 	}
 	
  public Persona  readPersona(String cedula) {
-	 
-	return personaDao.read(cedula);
+	  Persona pe= new Persona();
+	 pe = personaDao.read(cedula);
+
+	return pe ;
 	 
 	 
  }
@@ -53,14 +56,16 @@ public List <Persona> getPersonas () {
 
 public Object getPersona (String cedula) {
 	
-	
-	return  personaDao.getPersona(cedula);
+	  Persona pe= new Persona();
+	 pe = personaDao.read(cedula);
+	return pe ;
 	
 }
 public Object getPersonaLog (String correo,String pass) {//Persona que se loggea
-	
-	
-	return  personaDao.getPersonaLog(correo, pass);
+	Persona pe= new Persona();
+	 pe = personaDao.getPersonaLog(correo, pass);
+
+	return pe ;
 	
 }
 
